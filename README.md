@@ -9,7 +9,7 @@ The problem is that data comes not exactly every second, it can be in interval 1
 
 We need to calculate the following metrics:
 
-- *`amount of "good" lines`. We need to delete duplicates. If we have 2 values with near the same timestamp (near is +-100 ms) it means that we have a duplicate, for us, this is a bad line,
-- *`maximum gap`. If we have at least one bad line, we have a gap of 1, if we have 10 bad lines sequencing, we have a gap of 10. We need to calculate the maximum gap
-- *`average gap` - the same with 2, but average on all gaps
+- *`amount of "good" lines`*. We need to delete duplicates. If we have 2 values with near the same timestamp (near is +-100 ms) it means that we have a duplicate, for us, this is a bad line,
+- *`maximum gap`*. If we have at least one bad line, we have a gap of 1, if we have 10 bad lines sequencing, we have a gap of 10. We need to calculate the maximum gap
+- *`average gap`* - the same with 2, but average on all gaps
  
