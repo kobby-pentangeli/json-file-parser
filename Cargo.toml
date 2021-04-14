@@ -1,0 +1,12 @@
+[package]
+name = "orao-gap"
+version = "0.1.0"
+description = "JSON file parser to aid in calculating data-quality metrics"
+authors = ["Kobby Pentangeli <kobbypentangeli@gmail.com>"]
+license = "MIT"
+edition = "2018"
+
+[dependencies]
+itertools = "0.10.0"
+serde = { version = "1.0.125", features = ["derive"] }
+serde_json = "1.0.64"
