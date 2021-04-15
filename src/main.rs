@@ -17,7 +17,7 @@ pub struct Message {
     pub timestamp: i64,
 }
 
-fn main() {
+fn main() -> std::io::Result<()> {
     // Extract files
     let mut files: Vec<File> = Vec::new();
     for entry in WalkDir::new("../stream").into_iter().filter_map(|e| e.ok()) {
@@ -64,4 +64,5 @@ fn main() {
             "-----------------------------------------------------------------------------------------"
         );
     }
+    Ok(())
 }
