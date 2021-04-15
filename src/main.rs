@@ -1,9 +1,14 @@
+//! JSON file parser to aid in calculating data-quality metrics
+//! Loads JSON files and calculates 3 metrics: amount of good lines, maximum gap, and average gap.
+//! Also calculates and prints the metrics and time which was taken to calculate them.
+
 use itertools::Itertools;
 use serde::Deserialize;
 use std::fs::File;
 use std::time::{Duration, SystemTime};
 use walkdir::WalkDir;
 
+/// Structure of a block of JSON data
 #[derive(Clone, Debug, Deserialize, PartialEq)]
 pub struct Message {
     pub provider_id: i32,
@@ -15,7 +20,7 @@ pub struct Message {
 fn main() {
     // Extract files
     let mut files: Vec<File> = Vec::new();
-    for entry in WalkDir::new("../stream").into_iter().filter_map(|e | e.ok()) {
+    for entry in WalkDir::new("../stream").into_iter().filter_map(|e| e.ok()) {
         let json_file_path = entry.path();
         let file = File::open(json_file_path).expect("File not found");
         files.push(file);
@@ -28,6 +33,7 @@ fn main() {
         packets.push(data);
     }
 
+    // Iterate over the list of files
     for data in &packets {
         // Remove duplicates
         let uniques = data
