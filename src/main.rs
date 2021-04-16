@@ -27,12 +27,13 @@ fn main() -> std::io::Result<()> {
         let uniques = data
             .clone()
             .into_iter()
-            .dedup_by(|x, y| x.timestamp - y.timestamp <= 100)
+            .dedup_by(|x, y| x.provider_id == y.provider_id && x.key == y.key)
             .collect::<Vec<Message>>();
 
         // Calculate metrics
+        // TODO:__ 
         let good_lines = uniques.len();
-        let maximum_gap = &data.len() - uniques.len();
+        let maximum_gap = data.len() - uniques.len();
         let average_gap = data.len() / maximum_gap;
 
         println!(
@@ -42,7 +43,7 @@ fn main() -> std::io::Result<()> {
             "| Time elapsed: {:.2} | Amount of good lines: {} |  Maximum gap: {} |  Average gap: {} |",
             SystemTime::now()
                 .duration_since(SystemTime::UNIX_EPOCH)
-                .unwrap_or(Duration::from_secs(0))
+                .unwrap_or_else(|_| Duration::from_secs(0))
                 .as_secs_f64(),
             good_lines,
             maximum_gap,
