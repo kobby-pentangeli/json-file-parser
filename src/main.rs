@@ -67,7 +67,10 @@ pub fn calculate_max_gap(data: &[Message]) -> Option<i64> {
 
 /// Computes the average on all gaps
 pub fn calculate_avg_gap(data: &[Message]) -> i64 {
-    data.windows(2)
+    let sum = data
+        .windows(2)
         .map(|message| (message[0].timestamp - message[1].timestamp).abs())
-        .sum::<i64>()
+        .sum::<i64>();
+    let data_len = data.len() as i64;
+    data_len / sum
 }
