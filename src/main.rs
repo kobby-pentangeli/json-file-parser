@@ -53,8 +53,7 @@ pub struct Message {
 
 /// Removes duplicate lines with respect to same provider ID and key
 pub fn remove_duplicates(data: Vec<Message>) -> Vec<Message> {
-    data
-        .into_iter()
+    data.into_iter()
         .dedup_by(|x, y| x.provider_id == y.provider_id && x.key == y.key)
         .collect::<Vec<Message>>()
 }
@@ -62,8 +61,8 @@ pub fn remove_duplicates(data: Vec<Message>) -> Vec<Message> {
 /// Computes the largest gap between two timestamps
 pub fn calculate_max_gap(data: &[Message]) -> Option<i64> {
     data.windows(2)
-            .map(|message| (message[0].timestamp - message[1].timestamp).abs())
-            .max_by(|x, y| x.partial_cmp(y).unwrap())
+        .map(|message| (message[0].timestamp - message[1].timestamp).abs())
+        .max_by(|x, y| x.partial_cmp(y).unwrap())
 }
 
 /// Computes the average on all gaps
