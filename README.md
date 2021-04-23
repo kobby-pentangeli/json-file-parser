@@ -1,12 +1,12 @@
-# Orao Gap Calculation Task
+# JSON File Parser
 
-JSON file parser to aid in calculating data-quality metrics
+A CLI application that reads from a stream of JSON files, and computes some data-quality metrics.
 
 ## The Task
 
-We are receiving blocks of data from different providers, every data provider undertakes to send data with a certain frequency.
-For example, a provider can tell that it is sending data every one second. It means that during an hour we expect to have 3600 values.
-The problem is that data comes not exactly every second, it can be in interval 1 second +-100 milliseconds and of course, sometimes a provider can stop sending data or send the same value twice.
+We are receiving blocks of data from different providers. Each data provider undertakes to send data with a certain frequency.
+For example, a provider can tell that it is sending data every one second. It means that within an hour we expect to have 3600 values.
+The problem is that data comes not exactly every second, it can be in interval 1 second +/-100 milliseconds and of course, sometimes a provider can stop sending data or send the same value twice.
 
 We need to calculate the following metrics:
 
