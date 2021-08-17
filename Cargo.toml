@@ -1,5 +1,5 @@
 [package]
-name = "orao-gap"
+name = "json-file-parser"
 version = "0.1.0"
 description = "JSON file parser to aid in calculating data-quality metrics"
 authors = ["Kobby Pentangeli <kobbypentangeli@gmail.com>"]
